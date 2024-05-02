@@ -23,18 +23,22 @@ typedef char bool;
 # define ENEMY_LEFT "./character/enemy.xpm"
 # define ENEMY_RIGHT "./character/enemy.xpm"
 
-void	init_enemy(t_vars *vars);
-void	get_enemy_cords(t_vars *vars);
-void	move_enemy(t_vars *vars);
-void	animate_enemy(t_vars *vars, int dir);
 void	*ft_calloc(size_t nmemb, size_t size);
+size_t	ft_strlen(char *s);
+int	ft_len(t_vars	*vars);
+void    parsing2(t_vars *vars);
 void	ft_bzero(void *s, size_t n);
-int	update(t_vars *vars);
-
+void    parsing(t_vars  *vars);
+char	*ft_strdup(char *src);
+void	print_error();
 
 void    draw_map(t_vars *vars);
-int    parsing(t_vars  *vars);
-int key_hook(int	keycode, t_vars	*vars);
+int	ft_strchr(const char *s, int c);
+int check_chars(t_vars	*vars);
+char	**ft_split(char const *s, char c);
+
+
+int     key_hook(int	keycode, t_vars	*vars);
 void    read_from_file(t_vars *vars, int fd);
 void	init_images(t_vars	*vars);
 void    display_map(t_vars  vars);

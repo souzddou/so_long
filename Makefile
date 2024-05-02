@@ -6,7 +6,7 @@
 #    By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/06 16:32:14 by souzddou          #+#    #+#              #
-#    Updated: 2024/03/11 00:51:20 by souzddou         ###   ########.fr        #
+#    Updated: 2024/05/02 22:02:58 by souzddou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,10 @@ SRC = so_long.c \
 				  design_wall.c \
 					display_map.c \
 						read_from_file.c \
+						parsing.c\
+						libft.c\
+						parsing2.c\
+				
 						
 
 OBJS = $(SRC:.c=.o)

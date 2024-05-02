@@ -6,21 +6,11 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:20:46 by souzddou          #+#    #+#             */
-/*   Updated: 2024/03/13 06:36:56 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/02 22:48:33 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
-
-// int    ft_strlen(t_vars   *vars)
-// {
-//     int i = 0;
-//     while(vars->map[i][0])
-//     {
-//         i++;
-//     }
-//     return(i);
-// }
 
 int ft_count_C(char map[WM][HM])
 {
@@ -63,4 +53,20 @@ void init_player_pos(t_vars *vars)
 		}
 		y++;
 	}
+}
+
+int	ft_len(t_vars	*vars)
+{
+	int	i;
+
+	i = 0;
+	while (vars->map[i] != NULL)
+		i++;
+	return (i);
+}
+
+void	print_error(char	*s)
+{
+	printf("%s", s);
+    exit(1);
 }

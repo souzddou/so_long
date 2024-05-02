@@ -30,68 +30,6 @@ typedef struct s_char
 	void *player[2];
 }           t_char;
 
-typedef struct s_enemy
-{
-	int		x;
-	int		y;
-	int		mov_up;
-	int		mov_down;
-	int		mov_left;
-	int		mov_right;
-	void	*img;
-	int		count;
-	int		dir;
-	t_list	sprites;
-}				t_enemy;
-
-// typedef struct s_map
-// {
-// 	int		fd;
-// 	char	**matrix;
-// 	char	*line;
-// 	// void	*img_ptr;
-// 	int		img_width;
-// 	int		img_height;
-// 	int		width;
-// 	int		height;
-// 	int		counter;
-// 	int		x;
-// 	int		y;
-// 	int		coins;
-// 	int		coins_counter;
-// 	int		exits;
-// 	void	*wall_img;
-// 	void	*empty_img;
-// 	void	*c_img;
-// 	void	*exit_img;
-// }				t_map;
-
-
-// typedef struct s_player
-// {
-// 	int		x;
-// 	int		y;
-// 	int		score;
-// 	int		count;
-// 	void	*img;
-// 	int		width;
-// 	int		height;
-// 	void	*addr;
-// 	int		bits_per_pixel;
-// 	int		line_length;
-// 	int		endian;
-// 	int		go_up;
-// 	int		go_down;
-// 	int		go_left;
-// 	int		go_right;
-// 	void	*img_up;
-// 	void	*img_down;
-// 	void	*img_left;
-// 	void	*img_right;
-// 	void	*img_closed;
-// 	t_list	sprites;
-// }				t_player;
-
 typedef struct	s_vars {
 	int	fd;
 	char	*line;
@@ -101,10 +39,9 @@ typedef struct	s_vars {
 	t_char chars;
 	int index;
 	int count;
-	char map[HM][WM];
+	char **map;
     int x_player_p;
     int y_player_p;
-	t_enemy	*enemy;
 	void	*file;
 	int height;
 	int width;
