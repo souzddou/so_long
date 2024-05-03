@@ -24,6 +24,7 @@ typedef char bool;
 # define ENEMY_RIGHT "./character/enemy.xpm"
 
 void	*ft_calloc(size_t nmemb, size_t size);
+int	ft_lenv2(t_vars	*vars);
 size_t	ft_strlen(char *s);
 int	ft_len(t_vars	*vars);
 void    parsing2(t_vars *vars);
@@ -31,6 +32,7 @@ void	ft_bzero(void *s, size_t n);
 void    parsing(t_vars  *vars);
 char	*ft_strdup(char *src);
 void	print_error();
+void	ft_check_space(char *str);
 
 void    draw_map(t_vars *vars);
 int	ft_strchr(const char *s, int c);

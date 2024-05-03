@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:20:46 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/02 22:48:33 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:32:19 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,24 @@ int	ft_len(t_vars	*vars)
 	while (vars->map[i] != NULL)
 		i++;
 	return (i);
+}
+
+int	ft_lenv2(t_vars	*vars)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while(vars->map[i])
+	{
+		j = 0;
+		while(vars->map[i][j])
+		{
+			j++;
+		}
+		i++;
+	}
+	return (j);
 }
 
 void	print_error(char	*s)

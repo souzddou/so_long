@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 21:56:42 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/02 22:49:18 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:38:34 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,12 @@ void    ft_checkwallv0(t_vars   *vars)
 		{
 			print_error("is not closed1");
 		}
-        if (vars->map[0][i] != '1')
+		i++;
+	}
+	i = 0;
+	while(vars->map[0][i])
+	{
+		if (vars->map[0][i] != '1')
         {
             print_error("is not closed2");
         }
@@ -77,13 +82,36 @@ void	ft_checkwallv1(t_vars    *vars)
     i = 1;
     while (i < ft_len(vars) - 1)
 	{
-		if (vars->map[i][ft_strlen(vars->map[0])] != '1')
+		if (vars->map[i][ft_strlen(vars->map[0]) - 1] != '1')
 		{
 			print_error("is not closed4");
 		}
 		i++;
 	}
-   
+}
+
+int is_rectangular(t_vars	*vars, int rows)
+{
+  long unsigned int wh;
+  int i;
+
+  wh = strlen(vars->map[0]);
+  i = 1;
+  while (i < rows)
+  {
+	if (strlen(vars->map[i]) != wh)
+		return 0;
+	i++;
+  }
+  return 1;
+}
+
+
+void	check(t_vars	*vars)
+{
+	if (is_rectangular(vars, ft_lenv2(vars)) == 0)
+		print_error("the map is not rectangular");
+		
 }
 
 void    parsing2(t_vars *vars)
@@ -91,4 +119,5 @@ void    parsing2(t_vars *vars)
     ft_check_duplication(vars);
     ft_checkwallv0(vars);
     ft_checkwallv1(vars);
+	check(vars);
 }
