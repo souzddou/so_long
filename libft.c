@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:37:10 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/02 21:28:25 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/04 16:37:51 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,43 +101,4 @@ char	**ft_split(char const *s, char c)
 	s2[num_words] = 0;
 	s2 = ft_split_words(s, c, s2, num_words);
 	return (s2);
-}
-char	*ft_strdup(char *src)
-{
-	size_t		i;
-	size_t		size;
-	char		*ls;
-
-	i = 0;
-	size = 0;
-	while (src[size] != '\0')
-		size++;
-	ls = malloc((size + 1) * sizeof(char));
-	if (!ls)
-		return (NULL);
-	while (src[i] != '\0')
-	{
-		ls[i] = (char )src[i];
-		i++;
-	}
-	ls[i] = '\0';
-	return (ls);
-}
-
-int	ft_strchr(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-		{
-			return (1);
-		}
-		i++;
-	}
-	if ((char)c == s[i])
-		return (1);
-	return (0);
 }

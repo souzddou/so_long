@@ -6,72 +6,82 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:22:23 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/02 16:26:13 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:42:57 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
 
-void m_m(t_vars *vars, void *img, int a, int b)
+void	put_in_medium(t_vars *vars, void *img, int a, int b)
 {
-	if (a == vars->x_player_p && b == vars->y_player_p)
-		img = vars->chars.player[vars->index];
+	int	cy;
+	int	cx;
+
 	if (img)
-			{
-                int cy;
-				if (vars->map[b][a] == 'C')
-					cy = 11;
-				else
-					cy = 0;
-                int cx;
-				if (vars->map[b][a] == 'C')
-					cx = 11;
-				else
-					cx = 0;
-                mlx_put_image_to_window(vars->mlx, vars->win, img, a * S + cx, b * S + cy);
-            }
+	{
+		if (vars->map[b][a] == 'C')
+			cy = 11;
+		else
+			cy = 0;
+		if (vars->map[b][a] == 'C')
+			cx = 11;
+		else
+			cx = 0;
+		mlx_put_image_to_window(vars->mlx, vars->win, img, a * S + cx, b * S
+			+ cy);
+	}
 }
 
-void c_c(t_vars *vars, void *img, int x, int y)
+void	check_image(t_vars *vars, void *img, int x, int y)
 {
-
-	
 	if (vars->map[y][x] == 'C')
-				img = vars->chars.gain;
-            if (x == vars->x_player_p && y == vars->y_player_p)
-				img = vars->chars.player[vars->index];
-            if (vars->map[y][x] == 'E')
-				img = vars->chars.door;
-			m_m(vars, img, x, y);
+	{
+		img = vars->chars.gain;
+	}
+	if (x == vars->x_player_p && y == vars->y_player_p)
+		img = vars->chars.player[vars->index];
+	if (vars->map[y][x] == 'E')
+		img = vars->chars.door;
+	if (x == vars->x_player_p && y == vars->y_player_p)
+		img = vars->chars.player[vars->index];
+	put_in_medium(vars, img, x, y);
 }
 
-void draw_map(t_vars *vars)
+void	draw_map(t_vars *vars)
 {
+	t_walls	charr;
+	void	*img;
+
 	vars->j = 0;
-	while(vars->j < HM)
+	while (vars->j < vars->hm)
 	{
 		vars->i = 0;
-		while(vars->i < WM)
+		while (vars->i < vars->wm)
 		{
-            void *img = NULL;
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->chars.space, (vars->i) * S, (vars->j) * S);
-            if (vars->map[vars->j][vars->i] == '1')
+			img = NULL;
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->chars.space,
+				(vars->i) * S, (vars->j) * S);
+			if (vars->map[vars->j][vars->i] == '1')
 			{
-				bool u, d, l, r;
-				u = d = l = r = true;
+				charr.u = 1;
+				charr.d = 1;
+				charr.l = 1;
+				charr.r = 1;
 				if (!vars->j || vars->map[vars->j - 1][vars->i] == '1')
-					u = false;
+					charr.u = 0;
 				if (!vars->i || vars->map[vars->j][vars->i - 1] == '1')
-					l = false;
-				if (vars->j + 1 == HM || vars->map[vars->j + 1][vars->i] == '1')
-					d = false;
-				if (vars->i + 1 == WM || vars->map[vars->j][vars->i + 1] == '1')
-					r = false;
-				img = getWall(u, d, l, r, vars);
+					charr.l = 0;
+				if (vars->j + 1 == vars->hm || vars->map[vars->j
+					+ 1][vars->i] == '1')
+					charr.d = 0;
+				if (vars->i + 1 == vars->wm || vars->map[vars->j][vars->i
+					+ 1] == '1')
+					charr.r = 0;
+				img = getwall(vars, charr);
 			}
-			c_c(vars, img, vars->i, vars->j);
+			check_image(vars, img, vars->i, vars->j);
 			vars->i++;
-        }
+		}
 		vars->j++;
-    }
+	}
 }

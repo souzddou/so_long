@@ -6,28 +6,32 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:47:47 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/02 20:55:45 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:11:01 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include"includes/so_long.h"
+#include "includes/so_long.h"
 
-void    display_map(t_vars  vars)
+int	ft_exit(t_vars *vars)
 {
-    
-    vars.index = 0;
+	free_map(vars);
+	cleanup_and_exit(vars);
+	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
+	free(vars->mlx);
+	exit(1);
+}
 
-    vars.mlx = mlx_init();
-
-    vars.win = mlx_new_window(vars.mlx, WM * 45 , HM * 45 , "aheesu");
-
-    init_images(&vars);
-
+void	display_map(t_vars vars)
+{
+	vars.index = 0;
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, (vars.wm) * 45, (vars.hm) * 45,
+			"aheesu");
+	init_images(&vars);
 	init_player_pos(&vars);
-
-    // init_enemy(&vars);
-	
-	mlx_key_hook(vars.win, key_hook, &vars);
-    // mlx_loop_hook((&vars)->mlx, update, &vars);
-    mlx_loop(vars.mlx);
+	mlx_hook(vars.win, 17, 0, ft_exit, &vars);
+	mlx_hook(vars.win, 2, 1, key_hook, &vars);
+	draw_map(&vars);
+	mlx_loop(vars.mlx);
 }

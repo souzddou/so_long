@@ -6,77 +6,78 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:25:45 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/02 20:49:59 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/04 18:38:55 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
 
-void	*f1(bool u, bool d, bool l, bool r, t_vars *vars)
+void	*f1(t_vars *vars, t_walls charr)
 {
-	if (u)
-		return vars->chars.wall1[0];
-	if (r)
-		return vars->chars.wall1[1];
-	if (d)
-		return vars->chars.wall1[2];
-	if (l)
-		return vars->chars.wall1[3];
-	return NULL;
-}
-
-void	*f2(bool u, bool d, bool l, bool r, t_vars *vars)
-{
-	if (u && l)
-		return vars->chars.wall2[0];
-	if (u && r)
-		return vars->chars.wall2[1];
-	if (r && d)
-		return vars->chars.wall2[2];
-	if (d && l)
-		return vars->chars.wall2[3];
-	if (u && d)
-		return vars->chars.wall_2[0];
-	if (l && r)
-		return vars->chars.wall_2[1];
-	return NULL;
-}
-
-void	*f3(bool u, bool d, bool l, bool r, t_vars *vars)
-{
-	if (u && l && r)
-		return vars->chars.wall3[0];
-	if (u && d && r)
-		return vars->chars.wall3[1];
-	if (d && l && r)
-		return vars->chars.wall3[2];
-	if (u && l && d)
-		return vars->chars.wall3[3];
+	if (charr.u)
+		return (vars->chars.wall1[0]);
+	if (charr.r)
+		return (vars->chars.wall1[1]);
+	if (charr.d)
+		return (vars->chars.wall1[2]);
+	if (charr.l)
+		return (vars->chars.wall1[3]);
 	return (NULL);
 }
 
-void	*f4(bool u, bool d, bool l, bool r, t_vars *vars)
+void	*f2(t_vars *vars, t_walls charr)
 {
-	if (u && d && l && r)
-		return vars->chars.wall4;
-	return(NULL);
+	if (charr.u && charr.l)
+		return (vars->chars.wall2[0]);
+	if (charr.r && charr.u)
+		return (vars->chars.wall2[1]);
+	if (charr.r && charr.d)
+		return (vars->chars.wall2[2]);
+	if (charr.d && charr.l)
+		return (vars->chars.wall2[3]);
+	if (charr.u && charr.d)
+		return (vars->chars.wall_2[0]);
+	if (charr.l && charr.r)
+		return (vars->chars.wall_2[1]);
+	return (NULL);
 }
 
-void *getWall(bool u, bool d, bool l, bool r, t_vars *vars)
+void	*f3(t_vars *vars, t_walls charr)
 {
-	void	*res = NULL;
-	
-	res = f1(u, d, l, r, vars);
+	if (charr.u && charr.l && charr.r)
+		return (vars->chars.wall3[0]);
+	if (charr.u && charr.d && charr.r)
+		return (vars->chars.wall3[1]);
+	if (charr.d && charr.l && charr.r)
+		return (vars->chars.wall3[2]);
+	if (charr.u && charr.l && charr.d)
+		return (vars->chars.wall3[3]);
+	return (NULL);
+}
+
+void	*f4(t_vars *vars, t_walls charr)
+{
+	if (charr.u && charr.l && charr.d && charr.r)
+		return (vars->chars.wall4);
+	return (NULL);
+}
+
+void	*getwall(t_vars *vars, t_walls charr)
+{
+	void	*res;
+
+	res = NULL;
+	res = f4(vars, charr);
 	if (res)
-		return res;
-	res = f2(u, d, l, r, vars);
+		return (res);
+	res = f3(vars, charr);
 	if (res)
-		return res;
-	res = f3(u, d, l, r, vars);
+		return (res);
+	res = f2(vars, charr);
 	if (res)
-		return res;
-	res = f4(u, d, l, r, vars);
+		return (res);
+	res = f1(vars, charr);
 	if (res)
-		return res;
-	return vars->chars.wall;
+		return (res);
+	return (vars->chars.wall);
 }

@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_print_nbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 14:08:48 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/06 13:21:43 by souzddou         ###   ########.fr       */
+/*   Created: 2023/11/26 12:00:21 by souzddou          #+#    #+#             */
+/*   Updated: 2024/02/15 23:47:25 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "ft_printf.h"
 
-void	game(char *s)
+int	ft_print_nbr(int n)
 {
-	t_vars	vars;
-	int		fd;
+	int	i;
 
-	vars.coins = 0;
-	fd = open(s, O_RDONLY);
-	if (fd < 0)
-		return ;
-	read_from_file(&vars, fd);
-	parsing(&vars);
-	display_map(vars);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac != 2)
+	i = 0;
+	if (n == -2147483648)
+		i += ft_print_str("-2147483648");
+	else
 	{
-		ft_printf("Error\nArguments not valid!");
-		return (1);
+		if (n < 0)
+		{
+			i += ft_printf_char('-');
+			n = n * -1;
+		}
+		if (n > 9)
+		{
+			i += ft_print_nbr(n / 10);
+		}
+		i += ft_printf_char((n % 10) + '0');
 	}
-	game(av[1]);
+	return (i);
 }

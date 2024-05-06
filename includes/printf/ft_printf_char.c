@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_printf_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 14:08:48 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/06 13:21:43 by souzddou         ###   ########.fr       */
+/*   Created: 2023/11/25 20:12:54 by souzddou          #+#    #+#             */
+/*   Updated: 2024/02/15 23:15:27 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "ft_printf.h"
 
-void	game(char *s)
+int	ft_printf_char(int c)
 {
-	t_vars	vars;
-	int		fd;
-
-	vars.coins = 0;
-	fd = open(s, O_RDONLY);
-	if (fd < 0)
-		return ;
-	read_from_file(&vars, fd);
-	parsing(&vars);
-	display_map(vars);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac != 2)
-	{
-		ft_printf("Error\nArguments not valid!");
-		return (1);
-	}
-	game(av[1]);
+	write(1, &c, 1);
+	return (1);
 }

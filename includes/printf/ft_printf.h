@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 14:08:48 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/06 13:21:43 by souzddou         ###   ########.fr       */
+/*   Created: 2023/11/28 11:28:34 by souzddou          #+#    #+#             */
+/*   Updated: 2024/02/16 00:31:42 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	game(char *s)
-{
-	t_vars	vars;
-	int		fd;
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdio.h>
 
-	vars.coins = 0;
-	fd = open(s, O_RDONLY);
-	if (fd < 0)
-		return ;
-	read_from_file(&vars, fd);
-	parsing(&vars);
-	display_map(vars);
-}
+int		ft_printf_char(int c);
+int		ft_print_ptr(unsigned long num);
+int		ft_print_str(char *s);
+int		ft_print_hex(unsigned long n, char format);
+int		ft_print_unsigned(unsigned int num);
+int		ft_print_nbr(int n);
+int		ft_printf(const char*s, ...);
 
-int	main(int ac, char **av)
-{
-	if (ac != 2)
-	{
-		ft_printf("Error\nArguments not valid!");
-		return (1);
-	}
-	game(av[1]);
-}
+#endif

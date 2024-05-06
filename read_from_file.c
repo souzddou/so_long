@@ -6,11 +6,11 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:54:47 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/02 20:56:03 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:31:24 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include"includes/so_long.h"
+#include "includes/so_long.h"
 
 size_t	ft_strlen(char *s)
 {
@@ -52,22 +52,26 @@ char	*ft_strjoin(char *line, char *buff)
 	return (str);
 }
 
-void read_from_file(t_vars *vars, int fd)
+void	read_from_file(t_vars *vars, int fd)
 {
-    char *s;
-    int i = 0;
-    char *rd = ft_strdup("");
+	char	*s;
+	int		i;
+	char	*rd;
+	char	**strs;
 
+	rd = NULL;
+	i = 0;
 	s = ft_strdup("");
-    while (s)
+	while (s)
 	{
 		rd = ft_strjoin(rd, s);
-        rd = ft_strjoin(rd, "\n");
 		free(s);
 		s = get_next_line(fd);
-       i++;
-    }
-	
-    char **strs = ft_split(rd, '\n');
+		i++;
+	}
+	strs = ft_split(rd, '\n');
+	free(rd);
 	vars->map = strs;
+	vars->wm = ft_lenwidth(vars);
+	vars->hm = ft_lenheight(vars);
 }
