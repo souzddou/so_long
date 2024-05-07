@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:54:28 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/07 13:26:46 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:34:37 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@
 # define ENEMY_RIGHT "./character/enemy.xpm"
 
 void	free_map(char **map, int len);
-void	free_mapv2(t_vars *vars);
 void	ft_map_v2(char **map, t_vars *vars);
-int		check_agharas(t_vars *vars);
+int		check_road(t_vars *vars);
 int		ft_lenwidth1(char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_lenheight(t_vars *vars);

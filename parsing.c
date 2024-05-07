@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 14:40:03 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/07 13:45:07 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:35:01 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	parsing(t_vars *vars)
 		free_map(vars->map, vars->hm);
 		print_error("foreign character");
 	}
-	if (check_agharas(vars) == 1)
+	if (check_road(vars) == 1)
 	{
 		free_map(vars->map, vars->hm);
 		free_map(vars->mapv2, vars->hm);

@@ -1,24 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_agharas.c                                    :+:      :+:    :+:   */
+/*   check_road.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 15:12:30 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/07 13:47:23 by souzddou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   check_path.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mnachit <mnachit@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 18:43:58 by mnachit           #+#    #+#             */
-/*   Updated: 2024/02/17 13:48:42 by mnachit          ###   ########.fr       */
+/*   Created: 2024/05/07 14:31:53 by souzddou          #+#    #+#             */
+/*   Updated: 2024/05/07 14:44:40 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +14,7 @@
 
 static void	ft_flood_fill(int x, int y, t_vars *vars)
 {
-	if (x < 0 || x >= 9 || y < 0 || y >= 25 || vars->mapv2[x][y] == '1'
+	if (x < 0 || x >= ft_lenheight(vars) || y < 0 || y >= ft_lenwidth(vars) || vars->mapv2[x][y] == '1'
 		|| vars->mapv2[x][y] == 'E' || vars->mapv2[x][y] == 'V')
 		return ;
 	vars->mapv2[x][y] = 'V';
@@ -60,7 +48,7 @@ static int	path_to_exit(t_vars *vars)
 	return (0);
 }
 
-int	check_agharas(t_vars *vars)
+int	check_road(t_vars *vars)
 {
 	ft_map_v2(vars->map, vars);
 	vars->x_player_p = 0;

@@ -6,14 +6,14 @@
 #    By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/06 16:32:14 by souzddou          #+#    #+#              #
-#    Updated: 2024/05/07 10:22:17 by souzddou         ###   ########.fr        #
+#    Updated: 2024/05/07 14:35:19 by souzddou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = gcc
 MLXFLAG = -lmlx -lXext -lX11
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar rc
 
@@ -33,7 +33,7 @@ SRC = so_long.c \
 						libft.c\
 						libft2.c\
 						parsing2.c\
-						check_agharas.c\
+						check_road.c\
 						
 				
 						
