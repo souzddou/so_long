@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:38:15 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/06 14:12:21 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:20:07 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,15 @@ int	ft_lenwidth1(char *s)
 	return (i);
 }
 
-void	free_map(t_vars *vars)
+void	free_map(char **map, int len)
 {
 	int	i;
 
 	i = 0;
-	while (i < vars->hm)
+	while (i < len)
 	{
-		free(vars->map[i]);
+		free(map[i]);
 		i++;
 	}
-	free(vars->map);
+	free(map);
 }

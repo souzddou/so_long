@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:06:18 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/06 13:16:49 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/07 12:48:33 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	mini_check(t_vars *vars, int x, int y)
 		vars->x_player_p = x;
 		vars->y_player_p = y;
 	}
-	else if (vars->map[y][x] == 'E' && vars->coins == 0)
+	if (vars->map[y][x] == 'E' && vars->coins == 0)
 	{
 		ft_printf("congrats mr you win");
-		free_map(vars);
+		free_map(vars->map, vars->hm);
 		cleanup_images(vars);
 		mlx_destroy_window(vars->mlx, vars->win);
 		mlx_destroy_display(vars->mlx);
@@ -46,7 +46,7 @@ void	extra_fun(t_vars *vars, int x, int y, int keycode)
 	mini_check(vars, new_x, new_y);
 	if (keycode == 65307)
 	{
-		free_map(vars);
+		free_map(vars->map, vars->hm);
 		cleanup_and_exit(vars);
 		mlx_destroy_window(vars->mlx, vars->win);
 		mlx_destroy_display(vars->mlx);

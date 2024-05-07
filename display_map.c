@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:47:47 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/06 14:11:01 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/07 12:48:53 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_exit(t_vars *vars)
 {
-	free_map(vars);
+	free_map(vars->map, vars->hm);
 	cleanup_and_exit(vars);
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);

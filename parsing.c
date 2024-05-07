@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 14:40:03 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/05 16:01:13 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/07 13:45:07 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_check_duplication(t_vars *vars)
 				ex++;
 			if (player > 1 || ex > 1)
 			{
-				free_map(vars);
+				free_map(vars->map, vars->hm);
 				print_error("there is a duplicate character");
 			}
 			j++;
@@ -87,7 +87,7 @@ void	check_missing(t_vars *vars)
 	if (ft_find(vars, 'E') || ft_find(vars, 'C') || ft_find(vars, 'P')
 		|| ft_find(vars, '1'))
 	{
-		free_map(vars);
+		free_map(vars->map, vars->hm);
 		print_error("character is missing");
 	}
 }
@@ -99,7 +99,14 @@ void	parsing(t_vars *vars)
 	check_missing(vars);
 	if (check_chars(vars) == 1)
 	{
-		free_map(vars);
+		free_map(vars->map, vars->hm);
 		print_error("foreign character");
 	}
+	if (check_agharas(vars) == 1)
+	{
+		free_map(vars->map, vars->hm);
+		free_map(vars->mapv2, vars->hm);
+		print_error("there no way to exit");
+	}
+	free_map(vars->mapv2, vars->hm);
 }

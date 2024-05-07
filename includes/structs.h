@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:56:47 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/05 15:21:13 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/07 11:50:28 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_vars
 	int		index;
 	int		count;
 	char	**map;
+	char	**mapv2;
 	int		x_player_p;
 	int		y_player_p;
 	void	*file;

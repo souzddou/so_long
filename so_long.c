@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:08:48 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/06 13:21:43 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/07 11:59:51 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	game(char *s)
 		return ;
 	read_from_file(&vars, fd);
 	parsing(&vars);
+	vars.coins = 0;
 	display_map(vars);
 }
 
@@ -33,5 +34,6 @@ int	main(int ac, char **av)
 		ft_printf("Error\nArguments not valid!");
 		return (1);
 	}
+	(void)ac;
 	game(av[1]);
 }

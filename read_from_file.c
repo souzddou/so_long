@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:54:47 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/05 18:31:24 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/07 13:31:12 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,23 @@ char	*ft_strjoin(char *line, char *buff)
 	str[ft_strlen(line) + ft_strlen(buff)] = '\0';
 	free(line);
 	return (str);
+}
+
+void	ft_map_v2(char **map, t_vars *vars)
+{
+	int		i;
+	char	**copy;
+
+	copy = NULL;
+	i = 0;
+	copy = (char **)malloc(sizeof(char *) * (vars->wm + 1));
+	while (i < vars->hm)
+	{
+		copy[i] = ft_strdup(map[i]);
+		i++;
+	}
+	copy[i] = NULL;
+	vars->mapv2 = copy;
 }
 
 void	read_from_file(t_vars *vars, int fd)

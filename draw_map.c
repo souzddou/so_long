@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:22:23 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/05 18:42:57 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:21:44 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,23 @@ void	check_image(t_vars *vars, void *img, int x, int y)
 	put_in_medium(vars, img, x, y);
 }
 
+void	extra_draw(t_vars *vars, t_walls *charr)
+{
+	(void)charr;
+	charr->u = 1;
+	charr->d = 1;
+	charr->l = 1;
+	charr->r = 1;
+	if (!vars->j || vars->map[vars->j - 1][vars->i] == '1')
+		charr->u = 0;
+	if (!vars->i || vars->map[vars->j][vars->i - 1] == '1')
+		charr->l = 0;
+	if (vars->j + 1 == vars->hm || vars->map[vars->j + 1][vars->i] == '1')
+		charr->d = 0;
+	if (vars->i + 1 == vars->wm || vars->map[vars->j][vars->i + 1] == '1')
+		charr->r = 0;
+}
+
 void	draw_map(t_vars *vars)
 {
 	t_walls	charr;
@@ -63,20 +80,7 @@ void	draw_map(t_vars *vars)
 				(vars->i) * S, (vars->j) * S);
 			if (vars->map[vars->j][vars->i] == '1')
 			{
-				charr.u = 1;
-				charr.d = 1;
-				charr.l = 1;
-				charr.r = 1;
-				if (!vars->j || vars->map[vars->j - 1][vars->i] == '1')
-					charr.u = 0;
-				if (!vars->i || vars->map[vars->j][vars->i - 1] == '1')
-					charr.l = 0;
-				if (vars->j + 1 == vars->hm || vars->map[vars->j
-					+ 1][vars->i] == '1')
-					charr.d = 0;
-				if (vars->i + 1 == vars->wm || vars->map[vars->j][vars->i
-					+ 1] == '1')
-					charr.r = 0;
+				extra_draw(vars, &charr);
 				img = getwall(vars, charr);
 			}
 			check_image(vars, img, vars->i, vars->j);
