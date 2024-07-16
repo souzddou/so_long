@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:31:53 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/07 14:44:40 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:57:30 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static void	ft_flood_fill(int x, int y, t_vars *vars)
 {
-	if (x < 0 || x >= ft_lenheight(vars) || y < 0 || y >= ft_lenwidth(vars) || vars->mapv2[x][y] == '1'
-		|| vars->mapv2[x][y] == 'E' || vars->mapv2[x][y] == 'V')
+	if (x < 0 || x >= ft_lenheight(vars) || y < 0 || y >= ft_lenwidth(vars)
+		|| vars->mapv2[x][y] == '1' || vars->mapv2[x][y] == 'E'
+		|| vars->mapv2[x][y] == 'V')
 		return ;
 	vars->mapv2[x][y] = 'V';
 	ft_flood_fill(x - 1, y, vars);

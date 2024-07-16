@@ -6,11 +6,20 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:06:18 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/07 12:48:33 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:08:47 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
+
+void	print_moves(int x, int y, t_vars *vars)
+{
+	if (x != vars->prev_x || y != vars->prev_y)
+	{
+		vars->moves++;
+		ft_printf("Moves : %d\n", vars->moves);
+	}
+}
 
 void	mini_check(t_vars *vars, int x, int y)
 {
@@ -23,10 +32,12 @@ void	mini_check(t_vars *vars, int x, int y)
 		}
 		vars->x_player_p = x;
 		vars->y_player_p = y;
+		print_moves(x, y, vars);
 	}
 	if (vars->map[y][x] == 'E' && vars->coins == 0)
 	{
-		ft_printf("congrats mr you win");
+		ft_printf("Moves : %d\n", vars->moves + 1);
+		ft_printf("Congrats Mr You Win");
 		free_map(vars->map, vars->hm);
 		cleanup_images(vars);
 		mlx_destroy_window(vars->mlx, vars->win);
@@ -62,6 +73,8 @@ void	check_keycode(t_vars *vars, int keycode)
 
 	new_x = vars->x_player_p;
 	new_y = vars->y_player_p;
+	vars->prev_x = vars->x_player_p;
+	vars->prev_y = vars->y_player_p;
 	if (keycode == 'd')
 	{
 		vars->index = 0;

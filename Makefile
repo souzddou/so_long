@@ -6,16 +6,15 @@
 #    By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/06 16:32:14 by souzddou          #+#    #+#              #
-#    Updated: 2024/05/07 14:35:19 by souzddou         ###   ########.fr        #
+#    Updated: 2024/07/03 17:03:43 by souzddou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-CC = gcc
+CC = cc
 MLXFLAG = -lmlx -lXext -lX11
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
-AR = ar rc
 
 SRC = so_long.c \
 		init_images.c \
@@ -43,12 +42,8 @@ OBJS = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) -o  $(NAME)  $(OBJS) $(MLXFLAG)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLXFLAG)
 	@echo "\033[0;32m so_long is ready"
-
-play : all
-	@echo '\033[0;33m'"  - Playing the map... \n"$(NONE)
-	@./so_long maps/map.ber
 	
 clean:	
 	$(RM) $(OBJS)

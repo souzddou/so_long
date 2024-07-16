@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:56:47 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/07 11:50:28 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:09:56 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ typedef struct s_char
 	void	*wall_2[2];
 	void	*wall3[4];
 	void	*wall4;
-	void	*enemyy;
 	void	*wall;
-	void	*game_over;
 	void	*space;
 	void	*gain;
 	void	*col;
@@ -42,7 +40,6 @@ typedef struct s_vars
 	int		hm;
 	int		wm;
 	int		coins;
-	char	*line;
 	void	*mlx;
 	void	*win;
 	int		map_index;
@@ -59,6 +56,8 @@ typedef struct s_vars
 	int		moves;
 	int		i;
 	int		j;
+	int		prev_x;
+	int		prev_y;
 }			t_vars;
 
 typedef struct s_walls

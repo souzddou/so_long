@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 14:40:03 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/07 14:35:01 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:21:39 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_check_duplication(t_vars *vars)
 			if (player > 1 || ex > 1)
 			{
 				free_map(vars->map, vars->hm);
-				print_error("there is a duplicate character");
+				print_error("Eroor");
 			}
 			j++;
 		}
@@ -88,7 +88,7 @@ void	check_missing(t_vars *vars)
 		|| ft_find(vars, '1'))
 	{
 		free_map(vars->map, vars->hm);
-		print_error("character is missing");
+		print_error("Eroor");
 	}
 }
 
@@ -100,13 +100,13 @@ void	parsing(t_vars *vars)
 	if (check_chars(vars) == 1)
 	{
 		free_map(vars->map, vars->hm);
-		print_error("foreign character");
+		print_error("Eroor");
 	}
 	if (check_road(vars) == 1)
 	{
 		free_map(vars->map, vars->hm);
 		free_map(vars->mapv2, vars->hm);
-		print_error("there no way to exit");
+		print_error("Eroor");
 	}
 	free_map(vars->mapv2, vars->hm);
 }

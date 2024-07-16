@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:54:28 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/07 14:34:37 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/06/29 20:09:17 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
-
-# define ENEMY_LEFT "./character/enemy.xpm"
-# define ENEMY_RIGHT "./character/enemy.xpm"
 
 void	free_map(char **map, int len);
 void	ft_map_v2(char **map, t_vars *vars);
@@ -64,5 +61,7 @@ void	cleanup_images(t_vars *vars);
 void	cleanup_and_exit(t_vars *vars);
 void	init_player_pos(t_vars *vars);
 void	*getwall(t_vars *vars, t_walls charr);
-
+void	check_image_fail(void *s);
+void	print_moves(int x, int y, t_vars *vars);
+void	ft_check_spacee(char *s);
 #endif

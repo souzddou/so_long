@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 10:20:46 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/07 13:47:45 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/05/11 17:55:38 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,6 @@ int	ft_lenwidth(t_vars *vars)
 
 void	print_error(char *s)
 {
-	ft_printf("%s", s);
+	ft_printf("%s\n", s);
 	exit(1);
 }

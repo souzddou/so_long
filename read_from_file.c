@@ -6,7 +6,7 @@
 /*   By: souzddou <souzddou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:54:47 by souzddou          #+#    #+#             */
-/*   Updated: 2024/05/07 13:31:12 by souzddou         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:25:04 by souzddou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,28 @@ char	*ft_strjoin(char *line, char *buff)
 	return (str);
 }
 
+void	read_from_file(t_vars *vars, int fd)
+{
+	char	*str;
+	char	*res;
+	char	**strs;
+
+	str = get_next_line(fd);
+	if (!str)
+		print_error("Eroor");
+	res = ft_strdup("");
+	while (str)
+	{
+		res = ft_strjoin(res, str);
+		free(str);
+		str = get_next_line(fd);
+	}
+	ft_check_spacee(res);
+	strs = ft_split(res, '\n');
+	free(res);
+	vars->map = strs;
+}
+
 void	ft_map_v2(char **map, t_vars *vars)
 {
 	int		i;
@@ -59,7 +81,7 @@ void	ft_map_v2(char **map, t_vars *vars)
 
 	copy = NULL;
 	i = 0;
-	copy = (char **)malloc(sizeof(char *) * (vars->wm + 1));
+	copy = (char **)malloc(sizeof(char *) * (vars->hm + 1));
 	while (i < vars->hm)
 	{
 		copy[i] = ft_strdup(map[i]);
@@ -69,26 +91,8 @@ void	ft_map_v2(char **map, t_vars *vars)
 	vars->mapv2 = copy;
 }
 
-void	read_from_file(t_vars *vars, int fd)
+void	check_image_fail(void *s)
 {
-	char	*s;
-	int		i;
-	char	*rd;
-	char	**strs;
-
-	rd = NULL;
-	i = 0;
-	s = ft_strdup("");
-	while (s)
-	{
-		rd = ft_strjoin(rd, s);
-		free(s);
-		s = get_next_line(fd);
-		i++;
-	}
-	strs = ft_split(rd, '\n');
-	free(rd);
-	vars->map = strs;
-	vars->wm = ft_lenwidth(vars);
-	vars->hm = ft_lenheight(vars);
+	if (!s)
+		print_error("Error");
 }
